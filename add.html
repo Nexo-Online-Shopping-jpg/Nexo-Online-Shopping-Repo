@@ -60,9 +60,9 @@
   const firebaseConfig = {
     apiKey: "AIzaSyBMVroNOmoOzSNtCifKbylM7AQDwfwnSwg",
     authDomain: "nexo-online-shopping.firebaseapp.com",
-    databaseURL: "https://nexo-online-shopping-default-rtdb.firebaseio.com", // <-- Add your DB URL here
+    databaseURL: "https://nexo-online-shopping-default-rtdb.firebaseio.com", // <-- Replace if needed
     projectId: "nexo-online-shopping",
-    storageBucket: "nexo-online-shopping.appspot.com", // fixed .app to .appspot.com
+    storageBucket: "nexo-online-shopping.appspot.com",
     messagingSenderId: "714254961212",
     appId: "1:714254961212:web:5485f5cf1e1196a848d139",
     measurementId: "G-9519LF87P5"
@@ -73,6 +73,7 @@
   const storage = firebase.storage();
   const database = firebase.database();
 
+  // Upload image
   function uploadImage(imgId) {
     const input = document.createElement('input');
     input.type = 'file';
@@ -81,7 +82,6 @@
       const file = e.target.files[0];
       if (!file) return;
 
-      // Upload to Firebase Storage
       const storageRef = storage.ref('uploads/' + Date.now() + '-' + file.name);
       const uploadTask = storageRef.put(file);
 
@@ -94,24 +94,35 @@
           console.error('Upload failed:', error);
         },
         () => {
-          // Get download URL
           uploadTask.snapshot.ref.getDownloadURL().then(url => {
-            // Set image preview
             document.getElementById(imgId).src = url;
-
-            // Save URL to Realtime Database
             database.ref('images/' + imgId).set({
               imageUrl: url,
               uploadedAt: new Date().toISOString()
             });
-
-            console.log('File available at', url);
           });
         }
       );
     };
     input.click();
   }
+
+  // Auto load images from DB
+  function loadImages() {
+    database.ref('images').on('value', snapshot => {
+      const data = snapshot.val();
+      if (data) {
+        for (let imgId in data) {
+          if (document.getElementById(imgId)) {
+            document.getElementById(imgId).src = data[imgId].imageUrl;
+          }
+        }
+      }
+    });
+  }
+
+  // Load on page start
+  loadImages();
 </script>
 
 </body>
