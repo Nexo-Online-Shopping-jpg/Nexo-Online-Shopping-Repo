@@ -3,67 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nexo Online Shopping Support</title>
+<title>Animated Contact Card</title>
 <style>
     body {
         margin: 0;
-        background-color: #000; /* තද කලු background */
+        background-color: #000;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        gap: 20px;
         font-family: Arial, sans-serif;
         overflow: hidden;
     }
 
-    /* Card styles */
     .contact-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 0, 0, 0.05);
         border-radius: 12px;
-        padding: 15px;
+        padding: 50px 15px;
         width: 220px;
         text-align: center;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 0, 0, 0.3);
         color: white;
         animation: fadeIn 1s ease-in-out, pulse 3s infinite ease-in-out;
     }
 
-    /* Profile image with shine effect */
     .contact-card img {
-        width: 70px;
-        height: 70px;
+        width: 100px; /* ⬅ Photo එක ලොකු කරන්න */
+        height: 100px;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.3);
+        border: 3px solid rgba(255, 0, 0, 0.6); /* ⬅ Border තවත් thick */
         margin-bottom: 10px;
-        position: relative;
-        overflow: hidden;
         animation: glow 3s infinite ease-in-out;
     }
 
-    /* Text styling */
     .contact-card h2 {
         margin: 0;
         font-size: 16px;
         animation: slideUp 0.6s ease-in-out;
     }
 
-    .contact-card p {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.7);
-        margin: 4px 0;
-        animation: slideUp 0.6s ease-in-out;
-        animation-delay: 0.2s;
-    }
-
-    /* Contact button */
     .contact-btn {
         margin-top: 10px;
         padding: 6px 12px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 0, 0, 0.15);
+        border: 1px solid rgba(255, 0, 0, 0.4);
         border-radius: 6px;
         color: white;
         font-size: 12px;
@@ -74,12 +62,11 @@
     }
 
     .contact-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 0, 0, 0.4);
         transform: scale(1.08);
-        box-shadow: 0 0 10px rgba(255,255,255,0.5);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
     }
 
-    /* Animations */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(15px); }
         to { opacity: 1; transform: translateY(0); }
@@ -91,29 +78,26 @@
     }
 
     @keyframes pulse {
-        0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); }
-        50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.2); }
+        0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.1); }
+        50% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.4); }
     }
 
     @keyframes glow {
-        0%, 100% { border-color: rgba(255,255,255,0.3); }
-        50% { border-color: rgba(255,255,255,0.6); }
+        0%, 100% { border-color: rgba(255, 0, 0, 0.6); }
+        50% { border-color: rgba(255, 100, 100, 1); }
     }
 </style>
 </head>
 <body>
 
+<!-- Card 1 -->
 <div class="contact-card">
     <img src="https://i.pravatar.cc/150?img=3" alt="Profile Picture">
-    <h2>PIXEL STUDIO</h2>
+    <h2>PIXEL STUDIO OFC</h2>
     <button class="contact-btn" onclick="window.open('https://wa.me/94778080044', '_blank')">CONTACT</button>
 </div>
-  
-<div class="contact-card">
-    <img src="https://i.pravatar.cc/150?img=3" alt="Profile Picture">
-    <h2>PIXEL STUDIO</h2>
-    <button class="contact-btn" onclick="window.open('https://wa.me/94778080044', '_blank')">CONTACT</button>
-</div>
+
+
 
 </body>
 </html>
