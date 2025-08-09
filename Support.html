@@ -3,101 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Contact Card</title>
+<title>Contact Cards 2025 - Pale Neutral Theme</title>
 <style>
     body {
         margin: 0;
-        background-color: #000;
-        height: 100vh;
+        background-color: black;
+        font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        height: 100vh;
+    }
+
+    .container {
+        display: flex;
         gap: 20px;
-        font-family: Arial, sans-serif;
-        overflow: hidden;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .contact-card {
-        background: rgba(255, 0, 0, 0.05);
-        border-radius: 12px;
-        padding: 50px 15px;
-        width: 220px;
+        background-color: rgba(245, 245, 245, 0.05); /* Pale neutral background */
+        border: 2px solid rgba(200, 200, 200, 0.6); /* Light grey border */
+        border-radius: 15px;
+        padding: 25px;
+        width: 180px;
         text-align: center;
-        box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 0, 0, 0.3);
-        color: white;
-        animation: fadeIn 1s ease-in-out, pulse 3s infinite ease-in-out;
+        animation: glowPulse 4s infinite ease-in-out;
+        transition: background-color 0.5s ease, border-color 0.5s ease;
     }
 
-    .contact-card img {
-        width: 100px; /* ⬅ Photo එක ලොකු කරන්න */
-        height: 100px;
+    .contact-card:hover {
+        background-color: rgba(245, 245, 245, 0.15);
+        border-color: #dcdcdc; /* Gainsboro */
+    }
+
+    @keyframes glowPulse {
+        0% {
+            box-shadow: 0 0 10px rgba(220, 220, 220, 0.3);
+        }
+        50% {
+            box-shadow: 0 0 25px rgba(220, 220, 220, 0.6);
+        }
+        100% {
+            box-shadow: 0 0 10px rgba(220, 220, 220, 0.3);
+        }
+    }
+
+    .circle {
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
-        border: 3px solid rgba(255, 0, 0, 0.6); /* ⬅ Border තවත් thick */
-        margin-bottom: 10px;
-        animation: glow 3s infinite ease-in-out;
+        border: 2px solid rgba(200, 200, 200, 0.6);
+        margin: 0 auto 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(245, 245, 245, 0.05);
+        overflow: hidden;
+        transition: border-color 0.5s ease;
     }
 
-    .contact-card h2 {
-        margin: 0;
+    .contact-card:hover .circle {
+        border-color: #dcdcdc;
+    }
+
+    .circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    h2 {
+        color: #f5f5f5; /* Very light grey */
+        margin: 5px 0;
         font-size: 16px;
-        animation: slideUp 0.6s ease-in-out;
     }
 
-    .contact-btn {
-        margin-top: 10px;
-        padding: 6px 12px;
-        background: rgba(255, 0, 0, 0.15);
-        border: 1px solid rgba(255, 0, 0, 0.4);
-        border-radius: 6px;
-        color: white;
-        font-size: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        animation: slideUp 0.6s ease-in-out;
-        animation-delay: 0.4s;
+    p {
+        color: #b0b0b0; /* Soft grey */
+        font-size: 13px;
+        margin-bottom: 15px;
     }
 
-    .contact-btn:hover {
-        background: rgba(255, 0, 0, 0.4);
-        transform: scale(1.08);
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    a {
+        color: #dcdcdc;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideUp {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-        0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.1); }
-        50% { box-shadow: 0 0 25px rgba(255, 0, 0, 0.4); }
-    }
-
-    @keyframes glow {
-        0%, 100% { border-color: rgba(255, 0, 0, 0.6); }
-        50% { border-color: rgba(255, 100, 100, 1); }
+    a:hover {
+        color: #ffffff; /* Pure white */
+        text-decoration: underline;
     }
 </style>
 </head>
 <body>
 
-<!-- Card 1 -->
-<div class="contact-card">
-    <img src="https://i.pravatar.cc/150?img=3" alt="Profile Picture">
-    <h2>PIXEL STUDIO OFC</h2>
-    <button class="contact-btn" onclick="window.open('https://wa.me/94778080044', '_blank')">CONTACT</button>
+<div class="container">
+    <!-- Card 1 -->
+    <div class="contact-card">
+        <div class="circle">
+            <img src="https://via.placeholder.com/150" alt="Support Icon">
+        </div>
+        <h2>SUPPORT 1</h2>
+        <p>𝗠𝗔𝗟𝗦𝗛𝗔𝗡𝗜</p>
+        <a href="https://wa.me/94778080044" target="_blank">Contact Us</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="contact-card">
+        <div class="circle">
+            <img src="https://via.placeholder.com/150" alt="Sell Icon">
+        </div>
+        <h2>SUPPORT 2</h2>
+        <p>𝗧𝗛𝗘𝗘𝗞𝗦𝗛𝗔𝗡𝗔</p>
+        <a href="https://wa.me/94778080044" target="_blank">Contact Us</a>
+    </div>
 </div>
-
-
 
 </body>
 </html>
