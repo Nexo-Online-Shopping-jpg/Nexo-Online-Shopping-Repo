@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXO Box</title>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .top-left {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #00aaff;
+    text-shadow:
+      1px 1px 0 #005577,
+      2px 2px 0 #003344;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideFromTop 1s ease-in-out;
+  }
+
+  @keyframes slideFromTop {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  .action-btn {
+    background-color: #00aaff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+    animation: fadeScale 0.8s ease forwards;
+  }
+
+  .action-btn:nth-child(1) { animation-delay: 0.6s; }
+  .action-btn:nth-child(2) { animation-delay: 0.9s; }
+
+  @keyframes fadeScale {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .action-btn:hover {
+    background-color: #0088cc;
+  }
+
+  .action-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: white;
+  }
+
+  .box {
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.2s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+  }
+
+  .box-text {
+    flex: 1;
+  }
+
+  .box-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .box-text p {
+    margin: 5px 0 0;
+    color: #ccc;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-left">
+  NEXO
+  <div class="btn-group">
+    <a href="Menu.html" class="action-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 5v14m-7-7h14" stroke="white" stroke-width="2" fill="none"/>
+      </svg>
+    </a>
+    <a href="search.html" class="action-btn">
+      <svg viewBox="0 0 24 24">
+        <path d="M21.71 20.29l-3.387-3.387a8.5 8.5 0 10-1.414 1.414l3.387 3.387a1 1 0 001.414-1.414zM10.5 17a6.5 6.5 0 110-13 6.5 6.5 0 010 13z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+
+<div class="box">
+  <img src="profile.jpg" alt="" class="profile-pic">
+  <div class="box-text">
+    <h2>Nexo Online Shopping</h2>
+  </div>
+</div>
+
+</body>
+</html>
