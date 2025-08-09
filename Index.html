@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Nexo Shopping — Centered Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #000000;
+      --blue1: #0a6cff;
+      --blue2: #0a56d8;
+      --white: #ffffff;
+      --muted: rgba(255,255,255,0.66);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background: var(--bg);
+      color:var(--white);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+    }
+
+    .preview {
+      text-align:center;
+      width:100%;
+      max-width:420px;
+      padding:0 20px;
+      margin:auto;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* Blue rounded box with centered "N" */
+    .icon {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 18px;
+      border-radius:28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg, var(--blue1) 0%, var(--blue2) 100%);
+      box-shadow: 0 20px 40px rgba(10,90,220,0.20);
+      animation: pulse 1.2s ease-in-out 0s 2;
+    }
+
+    .icon svg{
+      width: 62%;
+      height: 62%;
+      display:block;
+      animation: drawN 1.5s ease forwards 0.2s 2;
+    }
+
+    h1.brand {
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:0.2px;
+      margin-top:12px;
+      margin-bottom:6px;
+      color: var(--white);
+      animation: fadeIn 1s ease forwards 0.5s 2;
+    }
+
+    p.tagline {
+      margin-top:0;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:500;
+      animation: fadeIn 1s ease forwards 0.8s 2;
+    }
+
+    /* Button */
+    .open-btn {
+      display:inline-block;
+      background: var(--blue1);
+      color: var(--white);
+      padding: 10px 20px;
+      font-size:14px;
+      font-weight:600;
+      border-radius:8px;
+      border:none;
+      margin-top:15px;
+      cursor:pointer;
+      opacity:0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    /* Show button after delay */
+    body.show-button .open-btn {
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {opacity:0; transform:translateY(20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to {opacity:1;}
+    }
+
+    @keyframes pulse {
+      0%, 100% {transform: scale(1);}
+      50% {transform: scale(1.08);}
+    }
+
+    @keyframes drawN {
+      from {stroke-dasharray: 0 300; opacity:0;}
+      to {stroke-dasharray: 300 0; opacity:1;}
+    }
+
+    /* smaller screens tweaks */
+    @media (max-width:420px){
+      .icon{width:170px;height:170px;border-radius:22px}
+      .icon svg{width:62%;height:62%}
+      h1.brand{font-size:18px}
+      p.tagline{font-size:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="preview" role="img" aria-label="Nexo Shopping centered preview">
+    <div class="icon" aria-hidden="true">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path d="M24 82 V18 L76 82 V18" fill="none" stroke="#ffffff" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1 class="brand">NEXO SHOPPING</h1>
+    <p class="tagline">Your Go-To Place For Quality Products at The Best Prices, Anytime, Anywhere.</p>
+    <button class="open-btn">OPEN</button>
+  </div>
+
+  <script>
+    // Show button after animations finish (approx 3.5s)
+    setTimeout(() => {
+      document.body.classList.add("show-button");
+    }, 3500);
+  </script>
+</body>
+</html>
