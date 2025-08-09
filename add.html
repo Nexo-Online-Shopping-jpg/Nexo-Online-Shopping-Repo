@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexo Photo Upload</title>
+<style>
+  body {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+  }
+  .photo-box {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: #000;
+    margin: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #333;
+  }
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="photo-box" onclick="uploadImage('img1')">
+    <img id="img1" src="plus-icon.png" alt="+" />
+  </div>
+  <div class="photo-box" onclick="uploadImage('img2')">
+    <img id="img2" src="plus-icon.png" alt="+" />
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+
+<script>
+  // Firebase Config
+  const firebaseConfig = {
+    apiKey: "AIzaSyBMVroNOmoOzSNtCifKbylM7AQDwfwnSwg",
+    authDomain: "nexo-online-shopping.firebaseapp.com",
+    databaseURL: "https://nexo-online-shopping-default-rtdb.firebaseio.com", // <-- Add your DB URL here
+    projectId: "nexo-online-shopping",
+    storageBucket: "nexo-online-shopping.appspot.com", // fixed .app to .appspot.com
+    messagingSenderId: "714254961212",
+    appId: "1:714254961212:web:5485f5cf1e1196a848d139",
+    measurementId: "G-9519LF87P5"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const storage = firebase.storage();
+  const database = firebase.database();
+
+  function uploadImage(imgId) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      // Upload to Firebase Storage
+      const storageRef = storage.ref('uploads/' + Date.now() + '-' + file.name);
+      const uploadTask = storageRef.put(file);
+
+      uploadTask.on('state_changed',
+        snapshot => {
+          let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+        },
+        error => {
+          console.error('Upload failed:', error);
+        },
+        () => {
+          // Get download URL
+          uploadTask.snapshot.ref.getDownloadURL().then(url => {
+            // Set image preview
+            document.getElementById(imgId).src = url;
+
+            // Save URL to Realtime Database
+            database.ref('images/' + imgId).set({
+              imageUrl: url,
+              uploadedAt: new Date().toISOString()
+            });
+
+            console.log('File available at', url);
+          });
+        }
+      );
+    };
+    input.click();
+  }
+</script>
+
+</body>
+</html>
