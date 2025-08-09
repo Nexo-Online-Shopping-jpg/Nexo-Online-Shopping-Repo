@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexo Online Shopping Menu</title>
+<style>
+    body {
+        margin: 0;
+        background-color: black;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .glass-btn {
+        position: relative;
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 14px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+
+    /* 3D hover effect */
+    .glass-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Light reflection animation */
+    .glass-btn::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transform: rotate(25deg);
+        animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+        0% { transform: translateX(-100%) rotate(25deg); }
+        100% { transform: translateX(100%) rotate(25deg); }
+    }
+</style>
+</head>
+<body>
+
+<button class="glass-btn" onclick="window.location.href='sell.html'">TO SELL</button>
+<button class="glass-btn" onclick="window.location.href='support.html'">SUPPORT</button>
+
+</body>
+</html>
