@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>NEXO ONLINE SHOPPING</title>
+  <title>Nexo Online Shopping</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg: #000000;
-      --blue1: #0a6cff;
-      --blue2: #0a56d8;
+      --blue1: #000000; /* කලු කළා */
+      --blue2: #000000;
       --white: #ffffff;
       --muted: rgba(255,255,255,0.66);
     }
@@ -32,10 +32,11 @@
       max-width:420px;
       padding:0 20px;
       margin:auto;
-      animation: fadeInUp 1s ease forwards;
+      animation: fadeInUp 1.5s ease forwards;
+      animation-iteration-count: 2; /* දෙපාරක් run */
     }
 
-    /* Blue rounded box with centered "N" */
+    /* Black rounded box with centered "N" */
     .icon {
       width: 200px;
       height: 200px;
@@ -45,15 +46,15 @@
       align-items:center;
       justify-content:center;
       background: linear-gradient(180deg, var(--blue1) 0%, var(--blue2) 100%);
-      box-shadow: 0 20px 40px rgba(10,90,220,0.20);
-      animation: pulse 1.2s ease-in-out 0s 2;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      animation: pulse 2s ease-in-out 0s 2; /* slow + twice */
     }
 
     .icon svg{
       width: 62%;
       height: 62%;
       display:block;
-      animation: drawN 1.5s ease forwards 0.2s 2;
+      animation: drawN 2.5s ease forwards 0.2s 2; /* slow + twice */
     }
 
     h1.brand {
@@ -63,7 +64,7 @@
       margin-top:12px;
       margin-bottom:6px;
       color: var(--white);
-      animation: fadeIn 1s ease forwards 0.5s 2;
+      animation: fadeIn 1.5s ease forwards 0.5s 2; /* slow + twice */
     }
 
     p.tagline {
@@ -71,7 +72,7 @@
       color:var(--muted);
       font-size:13px;
       font-weight:500;
-      animation: fadeIn 1s ease forwards 0.8s 2;
+      animation: fadeIn 1.5s ease forwards 0.8s 2; /* slow + twice */
     }
 
     /* Button */
@@ -136,14 +137,14 @@
     </div>
     <h1 class="brand">NEXO ONLINE SHOPPING</h1>
     <p class="tagline">Your Go-To Place For Quality Products at The Best Prices, Anytime, Anywhere.</p>
-    <button class="open-btn" onclick="window.location.href='1 Page.html'">OPEN</button>
+    <button class="open-btn" onclick="window.location.href='Home.html'">𝗢𝗣𝗘𝗡</button>
   </div>
 
   <script>
-    // Show button after animations finish (approx 3.5s)
+    // Button show delay adjust for double animation
     setTimeout(() => {
       document.body.classList.add("show-button");
-    }, 3500);
+    }, 5500); // slow + twice
   </script>
 </body>
 </html>
